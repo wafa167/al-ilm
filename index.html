@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Ma'rifah | Islamic Knowledge Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #1A5D1A;
+            --secondary-gold: #D4AF37;
+            --light-beige: #F5F5DC;
+            --dark-green: #0F3D0F;
+            --accent-teal: #008080;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8f5e8 100%);
+            min-height: 100vh;
+        }
+        
+        .header-gradient {
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
+        }
+        
+        .nav-item:hover {
+            color: var(--secondary-gold);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        
+        .knowledge-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .knowledge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-divider {
+            background: linear-gradient(90deg, transparent, var(--secondary-gold), transparent);
+            height: 2px;
+        }
+        
+        .islamic-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(26, 93, 26, 0.1) 2px, transparent 2px);
+            background-size: 30px 30px;
+        }
+        
+        .search-input:focus {
+            outline: 2px solid var(--secondary-gold);
+        }
+        
+        .feature-badge {
+            background: linear-gradient(45deg, var(--secondary-gold), #FFD700);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(212, 175, 55, 0.9);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-thumbnail:hover .play-button {
+            opacity: 1;
+        }
+        
+        .arabic-font {
+            font-family: 'Traditional Arabic', 'Scheherazade New', serif;
+        }
+        
+        .content-tab {
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        
+        .content-tab.active {
+            border-color: var(--secondary-gold);
+            color: var(--dark-green);
+        }
+        
+        .website-badge {
+            background: linear-gradient(45deg, var(--accent-teal), #009999);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="header-gradient text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-mosque text-2xl" style="color: var(--primary-green);"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold arabic-font">المعرفة</h1>
+                    <span class="text-sm opacity-80">Al-Ma'rifah</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-item font-medium">Home</a>
+                    <a href="#" class="nav-item font-medium">Quran</a>
+                    <a href="#" class="nav-item font-medium">Hadith</a>
+                    <a href="#" class="nav-item font-medium">Books</a>
+                    <a href="#" class="nav-item font-medium">Videos</a>
+                    <a href="#" class="nav-item font-medium">About</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search knowledge..." 
+                               class="search-input bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-white placeholder-white/70 w-48 focus:outline-none">
+                        <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70"></i>
+                    </div>
+                    <button class="bg-white text-green-900 px-4 py-2 rounded-full font-medium hover:bg-green-50 transition-colors">
+                        <i class="fas fa-user-circle mr-2"></i>Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 islamic-pattern">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-bold text-green-900 mb-6 arabic-font">
+                    طلب العلم فريضة
+                </h2>
+                <p class="text-xl text-gray-700 mb-8">
+                    "Seeking knowledge is obligatory upon every Muslim" - Explore the vast ocean of Islamic wisdom
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-full font-semibold transition-colors">
+                        <i class="fas fa-book-open mr-2"></i>Start Learning
+                    </button>
+                    <button class="border-2 border-green-700 text-green-700 hover:bg-green-50 px-8 py-4 rounded-full font-semibold transition-colors">
+                        <i class="fas fa-star mr-2"></i>All Resources Free
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Tabs -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="content-tab active px-6 py-3 font-semibold text-lg"><a href="#Tafsir">Tafsir</a></button>
+                <button class="content-tab px-6 py-3 font-semibold text-lg text-gray-600"><a href="#hadith">Hadith</a></button>
+                <button class="content-tab px-6 py-3 font-semibold text-lg text-gray-600"><a href="#books">E-Books</a></button>
+                <button class="content-tab px-6 py-3 font-semibold text-lg text-gray-600"><a href="#video">Video</a></button>
+            </div>
+
+            <!-- Tafsir Books Section -->
+             <div id="Tafsir">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+                <!-- Tafsir Book 1 - Ibn Kathir -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <div class="mb-4">
+                        <span class="feature-badge text-green-900 px-3 py-1 rounded-full text-sm font-medium">Classic</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-900 mb-3"><a href="https://www.islamland.com/uploads/books/en_tafseer_ibn_katheer_part_30_juz_amma.pdf">Tafsir Ibn Kathir</a></h3>
+                    <p class="text-gray-600 mb-4">Comprehensive Part 30 exegesis of the Quran by Imam Ismail ibn Kathir, renowned for its depth and authenticity</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-green-700 font-medium">Part 30</span>
+                        <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                            Read Now
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Tafsir Book 2 - Jalalayn -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-green-900 mb-3"><a href="https://www.altafsir.com/Books/Al_Jalalain_Eng.pdf">Tafsir al-Jalalayn</a></h3>
+                    <p class="text-gray-600 mb-4">Concise and popular commentary by Jalal ad-Din al-Mahalli and Jalal ad-Din as-Suyuti, widely studied worldwide</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-green-700 font-medium">Single Volume</span>
+                        <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                            Read Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tafsir Book 3 - Qurtubi -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <div class="mb-4">
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Scholarly</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-900 mb-3"><a href="https://archive.org/download/TafsirAlQurtubiVolI/Tafsir%20al%20Qurtubi%20-%20Vol%20I.pdf"> Tafsir al-Qurtubi</a></h3>
+                    <p class="text-gray-600 mb-4">Al-Jami' li-Ahkam al-Qur'an by Imam al-Qurtubi, focusing on legal rulings and jurisprudential aspects</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-green-700 font-medium">20 Volumes</span>
+                        <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                            Read Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tafsir Book 4 - Tabari -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-green-900 mb-3"><a href="https://islaambooks.files.wordpress.com/2012/05/the-commentary-on-the-quran-volume-i-tafsir-al-tabari.pdf">Tafsir al-Tabari</a></h3>
+                    <p class="text-gray-600 mb-4">Jami' al-Bayan by Imam al-Tabari, one of the earliest and most comprehensive classical tafsirs</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-green-700 font-medium">1 Volume</span>
+                        <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                            Read Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tafsir Book 5 - Fi Zilal -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <div class="mb-4">
+                       
+                    </div>
+                    <h3 class="text-xl font-bold text-green-900 mb-3"><a href="https://www.kalamullah.com/tafseer-as-sadi.html"> Tafsir al Sa'di</a></h3>
+                    <p class="text-gray-600 mb-4">"Tafsīr al-Saʿdī is clear, simple, and reliable, focusing on the meanings and lessons of the Qur’an without unnecessary detail. It’s excellent for beginners and general readers, though less detailed than classical works like Ibn Kathīr or al-Qurṭubī."</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-green-700 font-medium">10 Volumes</span>
+                        <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                            Read Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tafsir Book 6 - Maududi -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-green-900 mb-3"><a href="https://ia902301.us.archive.org/14/items/TheHolyQuranWithColorCodedEnglishTransliterationAndTranslationFaridBookDepot/quran-tafseer-maududi.pdf">Tafhim al-Qur'an</a></h3>
+                    <p class="text-gray-600 mb-4">"Towards Understanding the Quran" by Abul A'la Maududi, modern exegesis with practical guidance</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-green-700 font-medium">6 Volumes</span>
+                        <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                            Read Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Free Resources Banner -->
+    <section class="py-12 bg-gradient-to-r from-green-600 to-green-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-4dl mx-auto">
+                <i class="fas fa-gift text-5xl mb-6" style="color: var(--secondary-gold);"></i>
+                <h2 class="text-3xl font-bold mb-4">100% Free Islamic Resources</h2>
+                <p class="text-xl mb-6">All knowledge on this platform is completely free - no subscriptions, no fees, no hidden costs</p>
+                <p class="text-green-200">"The best among you are those who learn the Quran and teach it" - Prophet Muhammad (PBUH)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Video Section -->
+     <div id="video">
+    <section class="py-16 bg-green-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-green-900 mb-12">Featured Video Content</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Main Featured Video -->
+                <div class="video-thumbnail">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/915a5721-66ae-4259-9c90-c6861b5ef756.png" alt="Islamic scholar giving lecture in traditional library setting with wood paneling and bookshelves" class="w-full h-64 object-cover rounded-xl">
+                    <div class="play-button">
+                        <i class="fas fa-play text-white text-xl"></i>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="text-xl font-bold text-green-900">Understanding Tawhid: The Oneness of God</h3>
+                        <p class="text-gray-600">45 min · Dr. Omar Suleiman</p>
+                    </div>
+                </div>
+
+                <!-- Video Grid -->
+<div class="grid grid-cols-2 gap-4">
+    <div class="video-thumbnail relative">
+        <a href="https://www.youtube.com/watch?v=aN5cJIyPph0" target="_blank">
+            <img src="https://img.youtube.com/vi/aN5cJIyPph0/hqdefault.jpg" alt="Tafsir Surah Baqarah - Dr. Yasir Qadhi" class="w-full h-32 object-cover rounded-lg">
+            <div class="play-button absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-play text-white text-sm bg-black bg-opacity-50 p-2 rounded-full"></i>
+            </div>
+        </a>
+    </div>
+    <div class="video-thumbnail relative">
+        <a href="https://www.youtube.com/watch?v=8ivWLUhpyL4" target="_blank">
+            <img src="https://img.youtube.com/vi/8ivWLUhpyL4/hqdefault.jpg" alt="Tafsir Surah Al-Mulk - Shaykh Omar Suleiman" class="w-full h-32 object-cover rounded-lg">
+            <div class="play-button absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-play text-white text-sm bg-black bg-opacity-50 p-2 rounded-full"></i>
+            </div>
+        </a>
+    </div>
+    <div class="video-thumbnail relative">
+        <a href="https://www.youtube.com/watch?v=rAhkxDVEaMo" target="_blank">
+            <img src="https://img.youtube.com/vi/rAhkxDVEaMo/hqdefault.jpg" alt="Tafsir Surah Yusuf - Dr. Yasir Qadhi" class="w-full h-32 object-cover rounded-lg">
+            <div class="play-button absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-play text-white text-sm bg-black bg-opacity-50 p-2 rounded-full"></i>
+            </div>
+        </a>
+    </div>
+    <div class="video-thumbnail relative">
+        <a href="https://www.facebook.com/abdulnasirjangda/videos/562930739562391/" target="_blank">
+            <img src="https://i.ytimg.com/vi/-mIk1zzexJU/hqdefault.jpg" alt="Tafsir Session - Shaykh AbdulNasir Jangda" class="w-full h-32 object-cover rounded-lg">
+            <div class="play-button absolute inset-0 flex items-center justify-center">
+                <i class="fas fa-play text-white text-sm bg-black bg-opacity-50 p-2 rounded-full"></i>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+    <!-- E-Books Section -->
+     <div id="books">
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-green-900 mb-12">Islamic E-Books Library</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Book 1 -->
+                <div class="knowledge-card bg-white rounded-xl p-4 text-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b2d33e60-4f17-4ded-a1ce-d1c1c376fa35.png" alt="Classic Islamic book cover with gold embossed Arabic calligraphy on green background" class="w-32 h-48 object-cover mx-auto mb-4 rounded">
+                    <h3 class="font-bold text-green-900 mb-2"><a href="https://tawheedcenter.org/pdf/riyad_us_saliheen.pdf">Riyad us-Saliheen</a></h3>
+                    <p class="text-sm text-gray-600 mb-3">Imam Nawawi</p>
+                    <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors w-full">
+                    <a href="https://tawheedcenter.org/pdf/riyad_us_saliheen.pdf"> Download Free</a>
+                    </button>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="knowledge-card bg-white rounded-xl p-4 text-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5ed93e8-4135-49a0-94d3-5c5af197c594.png" alt="Modern Islamic book design with geometric patterns and elegant typography" class="w-32 h-48 object-cover mx-auto mb-4 rounded">
+                    <h3 class="font-bold text-green-900 mb-2">The Sealed Nectar</h3>
+                    <p class="text-sm text-gray-600 mb-3">Safiur Rahman</p>
+                    <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors w-full">
+                       <a href="https://www.muslim-library.com/dl/books/English_ArRaheeq_AlMakhtum_THE_SEALED_NECTAR.pdf">Download Free</a>
+                    </button>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="knowledge-card bg-white rounded-xl p-4 text-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b9bf88bd-c3aa-4e7f-a06b-7651c09a8950.png" alt="Ancient manuscript style book cover with brown leather texture and Arabic script" class="w-32 h-48 object-cover mx-auto mb-4 rounded">
+                    <h3 class="font-bold text-green-900 mb-2">Al-Adab al-Mufrad</h3>
+                    <p class="text-sm text-gray-600 mb-3">Imam Bukhari</p>
+                    <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors w-full">
+                     <a href="https://www.kalamullah.com/Books/Adab%20Al-Mufrad%20-%20Imam%20Bukhari.pdf"  > Download Free</a>
+                    </button>
+                </div>
+
+                <!-- Book 4 -->
+                <div class="knowledge-card bg-white rounded-xl p-4 text-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b2183287-03ce-4588-b403-af29d93b28c8.png" alt="Contemporary Islamic spirituality book with calming blue cover and moon motif" class="w-32 h-48 object-cover mx-auto mb-4 rounded">
+                    <h3 class="font-bold text-green-900 mb-2">Purification of the Heart</h3>
+                    <p class="text-sm text-gray-600 mb-3">Hamza Yusuf</p>
+                    <button class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors w-full">
+                      <a href="https://data.nur.nu/Kutub/English/Hamza-Yusuf_Purification-of-the-Heart.pdf"> Download Free</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Hadith Section Preview -->
+     <div id="hadith">
+    <section class="py-16 bg-green-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Hadith Collections</h2>
+                <p class="text-green-200">Authentic sayings and traditions of Prophet Muhammad (PBUH) - All available for free study</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-white/10 rounded-xl">
+                    <i class="fas fa-book-open text-3xl mb-4 text-gold-400" style="color: var(--secondary-gold);"></i>
+                    <h3 class="font-bold mb-2"><a href="https://d1-islamhouse-com.webpkgcache.com/doc/-/s/d1.islamhouse.com/data/en/ih_books/single/en_Sahih_Al-Bukhari.pdf">Al-Bukhari</a></h3>
+                    <p class="text-sm text-green-200">7,275 hadith</p>
+                </div>
+                <div class="text-center p-6 bg-white/10 rounded-xl">
+                    <i class="fas fa-book-open text-3xl mb-4" style="color: var(--secondary-gold);"></i>
+                    <h3 class="font-bold mb-2"><a href="https://d1.islamhouse.com/data/en/ih_books/single/en_Sahih_Muslim.pdf"> Muslim</a></h3>
+                    <p class="text-sm text-green-200">7,190 hadith</p>
+                </div>
+                <div class="text-center p-6 bg-white/10 rounded-xl">
+                    <i class="fas fa-book-open text-3xl mb-4" style="color: var(--secondary-gold);"></i>
+                    <h3 class="font-bold mb-2"><a href="https://www.kalamullah.com/Books/Hadith/Sunan%20Abu%20Dawud%20Vol.%205%20-%204351-5274.pdf"> Abu Dawud</a></h3>
+                    <p class="text-sm text-green-200">4,800 hadith</p>
+                </div>
+                <div class="text-center p-6 bg-white/10 rounded-xl">
+                    <i class="fas fa-book-open text-3xl mb-4" style="color: var(--secondary-gold);"></i>
+                    <h3 class="font-bold mb-2"><a href="https://www.kalamullah.com/Books/Hadith/Jami%20at-Tirmidhi%20Vol.%201%20-%201-543.pdf">at-Tirmidhi</a></h3>
+                    <p class="text-sm text-green-200">3,956 hadith</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Islamic Study Websites Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-green-900 mb-4">Recommended Islamic Study Websites</h2>
+                <p class="text-xl text-gray-600">Discover other valuable online resources for your Islamic studies journey</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Website 1 -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <div class="mb-4">
+                        <span class="website-badge text-white px-3 py-1 rounded-full text-sm font-medium">Comprehensive</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-900 mb-3">IslamQA.info</h3>
+                    <p class="text-gray-600 mb-4">Comprehensive Q&A platform with scholarly answers to Islamic questions, covering fiqh, aqeedah, and daily life issues</p>
+                    <a href="https://islamqa.info" target="_blank" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                        Visit Website
+                    </a>
+                </div>
+
+                <!-- Website 2 -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <div class="mb-4">
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">Quran</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-900 mb-3">Quran.com</h3>
+                    <p class="text-gray-600 mb-4">Beautiful Quran reader with multiple translations, recitations, and study tools. Perfect for daily Quran reading</p>
+                    <a href="https://quran.com" target="_blank" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                        Visit Website
+                    </a>
+                </div>
+
+                <!-- Website 3 -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <div class="mb-4">
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Hadith</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-900 mb-3">Sunnah.com</h3>
+                    <p class="text-gray-600 mb-4">Complete collection of authentic hadith from major collections with search functionality and Arabic text</p>
+                    <a href="https://sunnah.com" target="_blank" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                        Visit Website
+                    </a>
+                </div>
+
+                <!-- Website 4 -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <div class="mb-4">
+                        <span class="feature-badge text-green-900 px-3 py-1 rounded-full text-sm font-medium">Learning</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-900 mb-3">Bayyinah TV</h3>
+                    <p class="text-gray-600 mb-4">Premium Islamic learning platform with courses on Quran, Arabic, and Islamic studies by renowned scholars</p>
+                    <a href="https://bayyinah.com" target="_blank" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                        Visit Website
+                    </a>
+                </div>
+
+                <!-- Website 5 -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <div class="mb-4">
+                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-medium">Arabic</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-900 mb-3">Madinah Arabic</h3>
+                    <p class="text-gray-600 mb-4">Free online Arabic courses following the famous Madinah Arabic curriculum for learning classical Arabic</p>
+                    <a href="https://www.madinaharabic.com" target="_blank" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                        Visit Website
+                    </a>
+                </div>
+
+                <!-- Website 6 -->
+                <div class="knowledge-card bg-white rounded-xl p-6">
+                    <div class="mb-4">
+                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">Knowledge</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-900 mb-3">Islamic Online University</h3>
+                    <p class="text-gray-600 mb-4">Free Islamic education platform offering degree programs and courses in various Islamic sciences</p>
+                    <a href="https://www.islamiconlineuniversity.com" target="_blank" class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm hover:bg-green-200 transition-colors">
+                        Visit Website
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-950 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 arabic-font">المعرفة</h3>
+                    <p class="text-green-300 mb-4">Completely free Islamic knowledge platform for spiritual growth and learning.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-green-300 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-green-300 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-green-300 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-green-300 hover:text-white transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Free Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-green-300 hover:text-white transition-colors">Quran Tafsir</a></li>
+                        <li><a href="#" class="text-green-300 hover:text-white transition-colors">Hadith Collections</a></li>
+                        <li><a href="#" class="text-green-300 hover:text-white transition-colors">Islamic Books</a></li>
+                        <li><a href="#" class="text-green-300 hover:text-white transition-colors">Video Lectures</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Knowledge Areas</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-green-300 hover:text-white transition-colors">Quran Studies</a></li>
+                        <li><a href="#" class="text-green-300 hover:text-white transition-colors">Sunnah & Hadith</a></li>
+                        <li><a href="#" class="text-green-300 hover:text-white transition-colors">Islamic History</a></li>
+                        <li><a href="#" class="text-green-300 hover:text-white transition-colors">Spirituality</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <p class="text-green-300">Knowledge is free for all believers</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-green-800 mt-8 pt-8 text-center text-green-400">
+                <p>© 2025 Al-Ma'rifah Islamic Knowledge Platform. All resources completely free for seekers of knowledge.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.content-tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active', 'text-green-900'));
+                    tabs.forEach(t => t.classList.add('text-gray-600'));
+                    this.classList.add('active', 'text-green-900');
+                    this.classList.remove('text-gray-600');
+                    
+                    // Here you would typically show/hide different content sections
+                    // based on which tab was clicked
+                });
+            });
+            
+            // Simple search functionality
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    alert('Searching for: ' + this.value);
+                    this.value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
