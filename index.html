@@ -104,6 +104,30 @@
         .website-badge {
             background: linear-gradient(45deg, var(--accent-teal), #009999);
         }
+        .icon {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: white;
+      padding: 14px 20px;
+      float: right;
+    }
+
+    /* Mobile view */
+    @media screen and (max-width: 768px) {
+      .navbar a { display: none; }
+      .navbar a.icon {
+        display: block;
+      }
+    }
+
+    /* Show menu when active */
+    .navbar.responsive { position: relative; }
+    .navbar.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
     </style>
 </head>
 <body class="min-h-screen">
@@ -128,17 +152,18 @@
                     <a href="#" class="nav-item font-medium">About</a>
                 </div>
                 
-                <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <input type="text" placeholder="Search knowledge..." 
-                               class="search-input bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-white placeholder-white/70 w-48 focus:outline-none">
-                        <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-white/70"></i>
-                    </div>
-                    <button class="bg-white text-green-900 px-4 py-2 rounded-full font-medium hover:bg-green-50 transition-colors">
-                        <i class="fas fa-user-circle mr-2"></i>Login
-                    </button>
-                </div>
-            </div>
+                
+                    <script>
+function toggleMenu() {
+  var x = document.getElementById("myNavbar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+</script>
+        
         </div>
     </header>
 
